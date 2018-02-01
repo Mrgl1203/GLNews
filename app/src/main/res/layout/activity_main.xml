@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.gulei.glnews.module.main.activity.MainActivity">
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-         />
+        android:layout_height="0dp" />
 
     <com.gulei.glnews.ui.NoScrollViewPager
         android:id="@+id/viewPager"
@@ -17,6 +17,8 @@
         android:layout_height="match_parent">
 
     </com.gulei.glnews.ui.NoScrollViewPager>
+
+
 
     <LinearLayout
         android:id="@+id/LinearBottom"

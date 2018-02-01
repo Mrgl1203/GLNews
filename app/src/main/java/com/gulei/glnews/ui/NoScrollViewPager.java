@@ -23,13 +23,13 @@ public class NoScrollViewPager extends ViewPager {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         //返回false不拦截事件传递，继续传递给子view处理
-        return  isPageEnable;
+        return  isPageEnable&&super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         //返回false自己不再消费事件
-        return isPageEnable;
+        return isPageEnable&&super.onTouchEvent(ev);
     }
 
     public void setPageEnable(boolean isPageEnable) {

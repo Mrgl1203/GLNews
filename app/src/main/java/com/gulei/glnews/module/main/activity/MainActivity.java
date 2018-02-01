@@ -2,7 +2,8 @@ package com.gulei.glnews.module.main.activity;
 
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +16,7 @@ import com.gulei.glnews.module.main.fragment.NewsMainFragment;
 import com.gulei.glnews.module.video.fragment.VideoMainFragment;
 import com.gulei.glnews.ui.NoScrollViewPager;
 import com.gulei.glnews.ui.TabView;
+import com.gulei.glnews.util.Mlog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,7 @@ public class MainActivity extends BaseActivity {
     List<TabView> tabViews = new ArrayList<>();
     List<Fragment> fragments = new ArrayList<>();
     Fragment newsMainfragment;
-    Fragment photoMainfragment;
+    Fragment photosMainfragment;
     Fragment videoMainfragment;
     Fragment careMainfragment;
 
@@ -51,22 +53,15 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-    @Override
-    protected void initImmersionBar() {
-        super.initImmersionBar();
-        mImmersionBar.statusBarView(view)
-                .statusBarColor(R.color.green)
-                .init();
-    }
 
     @Override
     protected void init() {
         fragments.add(newsMainfragment = new NewsMainFragment());
-        fragments.add(photoMainfragment = new PhotoMainFragment());
+        fragments.add(photosMainfragment = new PhotoMainFragment());
         fragments.add(videoMainfragment = new VideoMainFragment());
         fragments.add(careMainfragment = new CareMainFragment());
 
-        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+        viewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 return fragments.get(position);
@@ -78,7 +73,22 @@ public class MainActivity extends BaseActivity {
             }
 
         });
-        viewPager.setPageEnable(false);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                changeTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        viewPager.setPageEnable(true);
         viewPager.setOffscreenPageLimit(fragments.size());
 
         tabViews.add(tabMain);
@@ -89,21 +99,25 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    public void changeImmersionBar(int color) {
+        mImmersionBar.fitsSystemWindows(true).statusBarColor(color).init();
+    }
+
 
     @OnClick({R.id.tabMain, R.id.tabGirl, R.id.tabVideo, R.id.tabCare})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tabMain:
-                changeTab(0);
+                viewPager.setCurrentItem(0,false);
                 break;
             case R.id.tabGirl:
-                changeTab(1);
+                viewPager.setCurrentItem(1,false);
                 break;
             case R.id.tabVideo:
-                changeTab(2);
+                viewPager.setCurrentItem(2,false);
                 break;
             case R.id.tabCare:
-                changeTab(3);
+                viewPager.setCurrentItem(3,false);
                 break;
         }
     }
@@ -112,11 +126,34 @@ public class MainActivity extends BaseActivity {
     int currentPosition = 0;
 
     private void changeTab(int position) {
+        Mlog.e("position=" + position);
         previousPosition = currentPosition;//记录之前一个tab的position
         currentPosition = position;
-        viewPager.setCurrentItem(currentPosition, false);
         tabViews.get(previousPosition).setChecked(false);
         tabViews.get(currentPosition).setChecked(true);
+
+        switch (position) {
+            //首页
+            case 0:
+                changeImmersionBar(R.color.main_color);
+                break;
+            //美女
+            case 1:
+                changeImmersionBar(R.color.red);
+                break;
+            //视频
+            case 2:
+                changeImmersionBar(R.color.green);
+                break;
+            //关注
+            case 3:
+                changeImmersionBar(R.color.blue);
+                break;
+            default:
+                break;
+
+        }
+
     }
 
     @Override

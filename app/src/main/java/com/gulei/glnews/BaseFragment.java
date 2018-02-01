@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gyf.barlibrary.ImmersionBar;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -18,7 +16,7 @@ import butterknife.Unbinder;
  */
 public abstract class BaseFragment extends Fragment {
     private Unbinder unbinder;
-    protected ImmersionBar mImmersionBar;
+//    protected ImmersionBar mImmersionBar;
 
     @Nullable
     @Override
@@ -32,8 +30,8 @@ public abstract class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
         //初始化沉浸式
-        if (isImmersionBarEnabled())
-            initImmersionBar();
+//        if (isImmersionBarEnabled())
+//            initImmersionBar();
         init();
     }
 
@@ -47,16 +45,16 @@ public abstract class BaseFragment extends Fragment {
      *
      * @return the boolean
      */
-    protected boolean isImmersionBarEnabled() {
-        return true;
-    }
-
-    protected void initImmersionBar() {
-        //在BaseFragment里初始化
-        mImmersionBar = ImmersionBar.with(this);
-        mImmersionBar
-                .init();
-    }
+//    protected boolean isImmersionBarEnabled() {
+//        return true;
+//    }
+//
+//    protected void initImmersionBar() {
+//        //在BaseFragment里初始化
+//        mImmersionBar = ImmersionBar.with(this);
+//        mImmersionBar
+//                .init();
+//    }
 
 
     @Override
@@ -64,7 +62,7 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
         if (unbinder != null)
             unbinder.unbind();
-        if (mImmersionBar != null)
-            mImmersionBar.destroy();
+//        if (mImmersionBar != null)
+//            mImmersionBar.destroy();
     }
 }

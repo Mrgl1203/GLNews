@@ -62,6 +62,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .init();
     }
 
+    public ImmersionBar getImmersionBar() {
+        return mImmersionBar;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

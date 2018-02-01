@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.gulei.glnews.BaseFragment;
 import com.gulei.glnews.R;
+import com.gulei.glnews.module.main.activity.MainActivity;
 
 import butterknife.BindView;
 
@@ -30,13 +31,6 @@ public class NewsMainFragment extends BaseFragment {
         return R.layout.fragment_news_main;
     }
 
-    @Override
-    protected void initImmersionBar() {
-        super.initImmersionBar();
-        mImmersionBar.statusBarView(view)
-                .statusBarColor(R.color.green)
-                .init();
-    }
 
     @Override
     protected void init() {

@@ -50,14 +50,6 @@ public class PhotoMainFragment extends BaseFragment {
 
     }
 
-    @Override
-    protected void initImmersionBar() {
-        super.initImmersionBar();
-        mImmersionBar
-                .statusBarView(view)
-                .statusBarColor(R.color.red)
-                .init();
-    }
 
     private void initData() {
         for (int i = 0; i < 100; i++) {
