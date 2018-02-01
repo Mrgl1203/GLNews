@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gulei.glnews.module.main.activity.MainActivity">
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+         />
+
+    <com.gulei.glnews.ui.NoScrollViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.gulei.glnews.ui.NoScrollViewPager>
+
+    <LinearLayout
+        android:id="@+id/LinearBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <com.gulei.glnews.ui.TabView
+            android:id="@+id/tabMain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcChecked="@mipmap/ic_home_selected"
+            app:srcUnChecked="@mipmap/ic_home_normal"
+            app:title="首页"
+            app:txtCheckedColor="@color/main_color"
+            app:txtUnCheckedColor="@color/light_gray" />
+
+        <com.gulei.glnews.ui.TabView
+            android:id="@+id/tabGirl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcChecked="@mipmap/ic_girl_selected"
+            app:srcUnChecked="@mipmap/ic_girl_normal"
+            app:title="美女"
+            app:txtCheckedColor="@color/main_color"
+            app:txtUnCheckedColor="@color/light_gray" />
+
+        <com.gulei.glnews.ui.TabView
+            android:id="@+id/tabVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcChecked="@mipmap/ic_video_selected"
+            app:srcUnChecked="@mipmap/ic_video_normal"
+            app:title="视频"
+            app:txtCheckedColor="@color/main_color"
+            app:txtUnCheckedColor="@color/light_gray" />
+
+        <com.gulei.glnews.ui.TabView
+            android:id="@+id/tabCare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcChecked="@mipmap/ic_care_selected"
+            app:srcUnChecked="@mipmap/ic_care_normal"
+            app:title="关注"
+            app:txtCheckedColor="@color/main_color"
+            app:txtUnCheckedColor="@color/light_gray" />
+
+
+    </LinearLayout>
+</RelativeLayout>

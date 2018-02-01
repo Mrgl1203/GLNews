@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TabView">
+        <attr name="srcChecked" format="reference" />
+        <attr name="srcUnChecked" format="reference" />
+        <attr name="txtCheckedColor" format="color" />
+        <attr name="txtUnCheckedColor" format="color" />
+        <attr name="title" format="string"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="tabButton">
+        <attr name="src" />
+        <attr name="srcCheck" />
+        <attr name="text" />
+        <attr name="textColor" />
+    </declare-styleable>
+
+</resources>
